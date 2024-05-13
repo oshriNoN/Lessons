@@ -13,6 +13,8 @@ import time
 value_1 = 0
 value_2 = 0
 round_counter = 0
+lowest_deck_length = 20
+max_rounds = 100
 
 # Get the actual value if the card
 def get_card_value(deck):
@@ -24,13 +26,13 @@ def print_card(deck):
 
 ## Check if either deck is empty and if so will finish the game
 def game_end(deck_1, deck_2, counter):
-    if counter >= 100:
+    if counter >= max_rounds:
         print("Game too long")
         return True
-    if len(deck_2.all_cards) == 0:
+    if len(deck_2.all_cards) < lowest_deck_length:
         print("Game finished - player one won!")
         return True
-    elif len(deck_1.all_cards) == 0:
+    elif len(deck_1.all_cards) < lowest_deck_length:
         print("Game finished - player two won!")
         return True
     else:
@@ -94,13 +96,13 @@ while not game_end(deck_1, deck_2, round_counter):
           win(deck_2, [deck_1.all_cards[0], deck_2.all_cards[0]])
 
   
-    print(len(deck_1.all_cards))
-    print(len(deck_2.all_cards))
+    print("Player one deck has:",  len(deck_1.all_cards), "cards")
+    print("Player one deck has:", len(deck_2.all_cards), "cards")
 
     deck_1.remove_card()
     deck_2.remove_card()
     round_counter +=1
-    print(round_counter)
+    print("round:", round_counter)
     time.sleep(0.05)
 else:
     exit("FINISHED")
