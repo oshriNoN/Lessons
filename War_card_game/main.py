@@ -12,21 +12,23 @@ import time
 '''
 value_1 = 0
 value_2 = 0
-round_counter = 0
-lowest_deck_length = 20
-max_rounds = 100
+round_counter = 0 #do not change 
 
-# Get the actual value if the card
+lowest_deck_length = 20 # When one of the player has X cards in the deck he will lose
+max_rounds = 100 # If there are no winnders after X rounds the game will end 
+
+# Get the actual value of the card in an integer
 def get_card_value(deck):
     return (deck.all_cards[0].get_value())
 
-## Print the card the was drawn
+# Print the card that was drawn
 def print_card(deck):
     return deck.all_cards[0]
 
-## Check if either deck is empty and if so will finish the game
+# Check if either deck is empty and if so will finish the game,
+# will also finish the game if its plassed maximum rounds
 def game_end(deck_1, deck_2, counter):
-    if counter >= max_rounds:
+    if counter > max_rounds:
         print("Game too long")
         return True
     if len(deck_2.all_cards) < lowest_deck_length:
@@ -38,9 +40,10 @@ def game_end(deck_1, deck_2, counter):
     else:
         return False
 
+# func will run in case of draw of the same value from both players 
 def war(deck_1, deck_2, again=0):
     print("WAR!!")
-    #make a list for 5 cards of each player - winner takes all
+    # make a list for 5 cards of each player - winner takes all
     try:
         war_list = [deck_1.all_cards[0], deck_1.all_cards[1], deck_1.all_cards[2], deck_1.all_cards[3], deck_1.all_cards[4], deck_1.all_cards[5],
                     deck_2.all_cards[0], deck_2.all_cards[1], deck_2.all_cards[2], deck_2.all_cards[3], deck_2.all_cards[4], deck_2.all_cards[5]]
@@ -63,46 +66,54 @@ def war(deck_1, deck_2, again=0):
         deck_1.remove_6_cards() # Removes top 6 cards 
         deck_2.remove_6_cards() #
     else:
-        again +=1
-        war(deck_1, deck_2, again)
+        again +=1 # in case there is another tie we will draw the next card
+        war(deck_1, deck_2, again) # rerun war() with the next card
         
 def win(deck, win_card_list):
     deck.add_cards(win_card_list)
 
-# #Creating a decks
-deck_1 = Deck()
-deck_2 = Deck()
 
-# shuffeling the decks
-deck_1.shuffle_deck()
-deck_2.shuffle_deck()
+def main(round_counter):
+    # Creating a decks
+    deck_1 = Deck()
+    deck_2 = Deck()
 
-while not game_end(deck_1, deck_2, round_counter):
+    # shuffeling the decks
+    deck_1.shuffle_deck()
+    deck_2.shuffle_deck()
+    while not game_end(deck_1, deck_2, round_counter):
 
-    # Draw card and get Value
-    print(f"\nPlayer one drew - {print_card(deck_1)}")
-    print(f"Player two drew - {print_card(deck_2)}")
+        # Draw card and get Value
+        print(f"\nPlayer one drew - {print_card(deck_1)}")
+        print(f"Player two drew - {print_card(deck_2)}")
 
-    value_1 = get_card_value(deck_1)
-    value_2 = get_card_value(deck_2)
+        value_1 = get_card_value(deck_1)
+        value_2 = get_card_value(deck_2)
+        
+        if value_1 == value_2:
+            war(deck_1, deck_2)
+
+        if value_1 > value_2:
+            win(deck_1, [deck_1.all_cards[0], deck_2.all_cards[0]])
+
+        if value_2 > value_1:
+            win(deck_2, [deck_1.all_cards[0], deck_2.all_cards[0]])
+
     
-    if value_1 == value_2:
-        war(deck_1, deck_2)
+        print("Player one deck has:",  len(deck_1.all_cards), "cards")
+        print("Player one deck has:", len(deck_2.all_cards), "cards")
 
-    if value_1 > value_2:
-          win(deck_1, [deck_1.all_cards[0], deck_2.all_cards[0]])
+        deck_1.remove_card()
+        deck_2.remove_card()
+        round_counter +=1
+        print("round:", round_counter)
+        time.sleep(0.05)
+    else:
+        exit("FINISHED")
 
-    if value_2 > value_1:
-          win(deck_2, [deck_1.all_cards[0], deck_2.all_cards[0]])
 
-  
-    print("Player one deck has:",  len(deck_1.all_cards), "cards")
-    print("Player one deck has:", len(deck_2.all_cards), "cards")
-
-    deck_1.remove_card()
-    deck_2.remove_card()
-    round_counter +=1
-    print("round:", round_counter)
-    time.sleep(0.05)
-else:
-    exit("FINISHED")
+if __name__ == "__main__":
+    try:
+        main(round_counter)
+    except KeyboardInterrupt:
+        exit()
