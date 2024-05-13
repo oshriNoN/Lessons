@@ -1,5 +1,5 @@
 
-from War_card_game.Class import Deck
+from War_card_game.Deck import Deck
 
 
 '''

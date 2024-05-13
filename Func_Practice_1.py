@@ -146,7 +146,7 @@ def count_primes(num):
 
 def main():
     # print(animal_crackers('Levelheaded Llama'))
-    print(makes_twenty(19.5,0.5))
+    blackjack()
     # print(capitileze_one_and_four('macdonald'))
     # print(within_ten(204))
     # has_33([1,2,3,4,5])
