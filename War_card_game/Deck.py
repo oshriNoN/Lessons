@@ -12,13 +12,16 @@ class Deck:
     def shuffle_deck(self):
         random.shuffle(self.all_cards)
 
-    
     def remove_card(self):
         self.all_cards.pop(0)
 
     def remove_6_cards(self):
         for i in range (0,5):
-            self.all_cards.pop(i)
+            try:
+                self.all_cards.pop(i)
+            except:
+                break
+
 
     def get_all_cards_len(self):
         return len(self.all_cards)
