@@ -16,7 +16,7 @@ class Bet():
     
     def draw_money(self, draw):
         self.money = self.money - int(draw)
-        return draw
+        # return draw
 
     def __str__(self) -> str:
         print(f"You have in total: {self.money}$")

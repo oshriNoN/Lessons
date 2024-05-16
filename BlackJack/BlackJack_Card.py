@@ -46,10 +46,3 @@ class Card:
         return self.__str__()
     
     
-# card1 = Card("Hearts", "Three")
-# card2 = Card("Spades", "Two")
-
-# x = card1.get_value()
-# y = card2.get_value()
-
-# print(card1 > card2)
