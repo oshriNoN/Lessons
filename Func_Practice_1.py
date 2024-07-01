@@ -14,13 +14,13 @@ def lesser_of_two_evens(a, b):
             return b
 
 
-def animal_crackers(word):
+def animal_crackers(word): #Check first and second word start with the same letter
     l_1 = word.lower()[0]
     l_2 = word.split()[1][0].lower()
     return l_1 == l_2
     
 
-def makes_twenty(n1, n2):
+def makes_twenty(n1, n2): 
     n1 = float(n1)
     n2 = float(n2)
     return n1 == 20 or n2 == 20 or n1 + n2 == 20
@@ -38,7 +38,7 @@ def capitileze_one_and_four(word):
     return new_word
 
 
-def master_yoda(text):
+def master_yoda(text): # return words in reverse
     new_text = ''
     new_text = (text.split()[::-1])
     return (' '  .join(new_text))
@@ -90,23 +90,6 @@ def blackjack():
             return 'BUST'
 
 
-def summer_of_69(m_list):
-    sum = 0
-
-    wait_for_9 = False
-    for num in m_list: 
-        if num == 6:
-            wait_for_9 = True
-
-        if wait_for_9 == True and num == 9:
-            wait_for_9 = False
- 
-        elif not wait_for_9:
-            sum = sum + num
-
-    return sum
-
-
 def spy_007(m_list):
     b_1 = False
     b_2 = False
@@ -129,7 +112,7 @@ def spy_007(m_list):
     return (b_1, b_2, b_3)
 
 
-def count_primes(num):
+def count_primes(num): #return list of prime numbers till a given num
     m_list = []
     for n in range(3, int(num+1)):
         i = n
@@ -146,12 +129,12 @@ def count_primes(num):
 
 def main():
     # print(animal_crackers('Levelheaded Llama'))
-    print(count_primes(190))
+    # print(count_primes(190))
     # print(capitileze_one_and_four('macdonald'))
     # print(within_ten(204))
-    print(has_33([1,3,3,4,5]))
+    # print(has_33([1,3,3,4,5]))
     # print(three_times_string('Mississippi'))
-    # print(summer_of_69([1,2,6,4,9,1,2,6,2,3,4,9,10]))
+    print(master_yoda("are you fuck dumb"))
     ################## Checks for 0-0-7 in a list 
     # v = spy_007([1,2,0,0,7,5])
     # if v == (True, True, True):

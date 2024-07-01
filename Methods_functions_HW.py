@@ -9,7 +9,7 @@ def is_num_in_range(num, low, high):
     return num in range(low, high+1)
 
 
-def high_low_string(st):
+def high_low_string(st): #return tuple of low and capital letters
     up_count = 0
     low_count = 0
     for letter in st:
@@ -36,12 +36,12 @@ def multiply_list(m_list):
     return x
 
 
-def is_palindrome(st):
+def is_palindrome(st): 
     new_st = st[::-1].replace(' ', '')
     return new_st == st.replace(' ', '')
     
 
-def is_pangram(st):
+def is_pangram(st): #pangram - sentence that contains every letter of the ABC
     out_st = ''
     new_st = st.lower()
     new_st = (sorted(new_st.replace(' ', '')))
@@ -55,11 +55,11 @@ def is_pangram(st):
 def main():
     # print(sphere_volume(4))
     # print(is_num_in_range(3,2,5))
-    # print(high_low_string('Hello Mr. Rogers, how are you this fine Tuesday?'))
+    print(high_low_string('Hello Mr. Rogers, how are you this fine Tuesday?'))
     # print(unique_from_a_list([1,1,1,2,2,2,3,3,4,5,5,5]))
     # print(multiply_list([1, 2, 3, -4]))
     # print(is_palindrome('race car'))
-    print(is_pangram('The quick brown fox jumps over the lazy dog'))
+    # print(is_pangram('The quick brown fox jumps over the lazy dog'))
 
 
 if __name__ == '__main__':
