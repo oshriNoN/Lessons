@@ -149,7 +149,7 @@ def main():
     print(count_primes(190))
     # print(capitileze_one_and_four('macdonald'))
     # print(within_ten(204))
-    # has_33([1,2,3,4,5])
+    print(has_33([1,3,3,4,5]))
     # print(three_times_string('Mississippi'))
     # print(summer_of_69([1,2,6,4,9,1,2,6,2,3,4,9,10]))
     ################## Checks for 0-0-7 in a list 
