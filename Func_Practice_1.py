@@ -136,9 +136,9 @@ def main():
 >>>>>>> c96d0d6... git test
     # print(capitileze_one_and_four('macdonald'))
     # print(within_ten(204))
-    # print(has_33([1,3,3,4,5]))
+    print(has_33([1,3,3,4,5]))
     # print(three_times_string('Mississippi'))
-    print(master_yoda("are you fuck dumb"))
+    # print(master_yoda("are you fuck dumb"))
     ################## Checks for 0-0-7 in a list 
     # v = spy_007([1,2,0,0,7,5])
     # if v == (True, True, True):
