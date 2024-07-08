@@ -1,5 +1,8 @@
-from numpy import *
-
-l1 = array([[3,4,5], [1,2,3], [7,2,3], [1,6,3]])
-
-m = matrix(l1)
+def factorial(n):
+    if n == 1: # The termination condition
+        return 1 # The base case
+    else:
+        res = n * factorial(n-1) # The recursive call
+        return res
+    
+print(factorial(5))
