@@ -14,18 +14,19 @@ yellow = Fore.YELLOW
 red = Fore.RED
 green = Fore.GREEN
 white = Fore.WHITE
+blue = Fore.BLUE
 round_count = 6
 
 def get_word_from_user():
     while True:
-        user_word : str= input(f"{Fore.WHITE} Enter a 5 letter word to guess\n")
+        user_word : str= input(f"{Fore.WHITE}Enter a 5 letter word to guess\n")
         if user_word.isalpha() and len(user_word) == 5: # Verify only letters and length of string is 5
             return user_word
         else:
             print("Invalid input")
             continue
 
-# Not in use 
+## Not in use ##
 def get_ch_count(user_word, ch): 
     # Using a list to store the count of each alphabet
     # by mapping the character to an index value
@@ -59,7 +60,7 @@ def get_ch_pos(word, ch):
 
 def compare(random_word, user_word):
     if random_word == user_word:
-        exit(f"{green} {user_word} is correct!")
+        exit(f"{green}WIN! {user_word} is correct!")
 
     else:
         output_dic = {}
@@ -67,7 +68,7 @@ def compare(random_word, user_word):
             if random_word.count(user_word[i]) > 0:
             # if get_ch_count(random_word, ch=user_word[i]) > 0: 
                 pos_user = get_ch_pos(random_word, ch=user_word[i])
-                pos_random = get_ch_pos(random_word, ch=random_word[i])
+                pos_random = get_ch_pos(random_word, ch=random_word[i]) ## can be moved out of loop (?)
                 if pos_user == pos_random:
                     output_dic[i] = (pos_user, green)
                 else:
@@ -77,11 +78,11 @@ def compare(random_word, user_word):
         return output_dic
 
 
-def print_output(dic, user_word):
+def return_coloured_string(dic, user_word):
     st = ""
     for key, value in dic.items():
         st += f"{value[1]}{user_word[key]} "
-    print(st)
+    return st
 
 
 def main():
@@ -90,12 +91,13 @@ def main():
     while i < round_count:
         user_word = get_word_from_user() 
         output_dic = compare(random_word, user_word) #
-        print_output(output_dic, user_word)
-        print(white, "\t")
-        # print(random_word)
+        print(return_coloured_string(output_dic, user_word))
+        print(random_word)
         i+=1
+        print(f"{white}You have {blue}{round_count - i}{white} guesses")
+        print("")
     else:
-        print(f"{red} FAIL!{white} Word was:{red} {random_word}")
+        print(f"{red}FAIL!{white} Word was:{red} {random_word}")
 
 
 if __name__ == "__main__":
