@@ -129,11 +129,7 @@ def count_primes(num): #return list of prime numbers till a given num
 
 def main():
     # print(animal_crackers('Levelheaded Llama'))
-<<<<<<< HEAD
     # print(count_primes(190))
-=======
-    # print(count_primes(190))
->>>>>>> c96d0d6... git test
     # print(capitileze_one_and_four('macdonald'))
     # print(within_ten(204))
     print(has_33([1,3,3,4,5]))
