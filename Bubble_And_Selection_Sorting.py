@@ -17,7 +17,7 @@ def bubble_sort(m_lst):
                 temp = m_lst[i]
                 m_lst[i] = m_lst[i+1]
                 m_lst[i+1] = temp
-                print(m_lst)
+                # print(m_lst)
     return m_lst
 
 
@@ -32,10 +32,15 @@ def selection_sort(m_lst):
         temp = m_lst[j]  # Reaplaces the position with the smallest num found (minpos)
         m_lst[j] = m_lst[minpos]
         m_lst[minpos] = temp
-        print(m_lst)
+        # print(m_lst)
     return m_lst
 
 
-# bubble_sort(m_lst_bub)
-selection_sort(m_lst_srt)
-# print(bubble_sort(m_lst_srt) == selection_sort(m_lst_srt))
+def main():
+    bubble_sort(m_lst_bub)
+    # selection_sort(m_lst_srt)
+    # print(bubble_sort(m_lst_srt) == selection_sort(m_lst_srt))
+
+
+if __name__ == "__main__":
+    main()

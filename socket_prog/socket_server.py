@@ -15,20 +15,24 @@ def main():
     global done
     while not done:
         client, addr = server.accept()
-        print("!!!!!!!!!!!!!!!")
         client.sendto("SERVER SEND".encode(), addr)
         print(client.recv(1024).decode())
     print("main thread stopped")
-    server.close()
-    print("server closed")
+
 
 
 def catch():
     global done
-    input("Press enter to stop\n")
+    input("Press any key to exit...\n")
     done = True
     print("Catch thread stopped - will stop on next input")
 
+def shutdown():
+    server.shutdown(socket.SHUT_RDWR)
+    print("Shutdown")
+    server.close()
+    print("server closed") 
+    
 
 if __name__ =="__main__":
     done = False
