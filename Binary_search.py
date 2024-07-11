@@ -28,3 +28,4 @@ print("Target is:", target_search)
 pos = search(sorted_ls, target_search)
 print("Position in list:", pos)
 exit()
+
