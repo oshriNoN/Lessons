@@ -107,15 +107,20 @@ def list_xor(n, list1, list2):
 def param_count(*args, **kwargs):
     return len(args) + len(kwargs)
 
+
 def format_number(num): #not working!! 
+    counter = 0
     st = str(num)
     new_num = ""
-    for i in range(len(st), 0, -1):
-        print(len(st) - i)
-        if (len(st) - i) % 2 == 0:
-            new_num += "," + st[len(st) - i]
-        else:
-            new_num += st[len(st) - i]
-        print(new_num)
+    for i in range(len(st), 0, -1): #len = 7
 
-format_number(1200300)
+        if counter == 2 and i > 1:
+            new_num = "," + st[i-1] + new_num
+            counter = 0
+        else:
+            new_num = st[i-1] + new_num
+            counter +=1
+
+    print(st, " -> ", new_num)
+
+format_number(232351300)
